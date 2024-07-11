@@ -19,7 +19,7 @@ namespace TrollsonaOrganizer.Controllers
 		public ActionResult Index()
 		{
 			List<Troll> model = _db.Trolls
-				.Include(trollInstance => trollInstance.BloodCaste)
+				.Include(troll => troll.BloodCaste)
 				.ToList();
 			return View(model);
 		}
@@ -31,13 +31,13 @@ namespace TrollsonaOrganizer.Controllers
 		}
 		
 		[HttpPost]
-		public ActionResult Create(Troll trollInstance)
+		public ActionResult Create(Troll troll)
 		{
-			if (trollInstance.BloodCasteId == 0)
+			if (troll.BloodCasteId == 0)
 			{
 				return RedirectToAction("Create");
 			}
-			_db.Trolls.Add(trollInstance);
+			_db.Trolls.Add(troll);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
@@ -45,57 +45,57 @@ namespace TrollsonaOrganizer.Controllers
 		public ActionResult Details(int id)
 		{
 			Troll thisTroll = _db.Trolls
-				.Include(trollInstance => trollInstance.BloodCaste)
-				.Include(trollInstance => trollInstance.JoinEntities)
+				.Include(troll => troll.BloodCaste)
+				.Include(troll => troll.JoinEntities)
 				.ThenInclude(join => join.StrifeSpecibus)
-				.FirstOrDefault(trollInstance => trollInstance.TrollId == id);
+				.FirstOrDefault(troll => troll.TrollId == id);
 			return View(thisTroll);
 		}
 		
 		public ActionResult Edit(int id)
 		{
-			Troll thisTroll = _db.Trolls.FirstOrDefault(trollInstance => trollInstance.TrollId == id);
+			Troll thisTroll = _db.Trolls.FirstOrDefault(troll => troll.TrollId == id);
 			ViewBag.BloodCasteId = new SelectList(_db.BloodCastes, "BloodCasteId", "ColorName");
 			return View(thisTroll);
 		}
 		
 		[HttpPost]
-		public ActionResult Edit(Troll trollInstance)
+		public ActionResult Edit(Troll troll)
 		{
-			_db.Trolls.Update(trollInstance);
+			_db.Trolls.Update(troll);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 		
 		public ActionResult AddSpecibus(int id)
 		{
-			Troll thisTroll = _db.Trolls.FirstOrDefault(trollInstance => trollInstance.TrollId == id);
+			Troll thisTroll = _db.Trolls.FirstOrDefault(troll => troll.TrollId == id);
 			ViewBag.StrifeSpecibusId = new SelectList(_db.StrifeSpecibi, "StrifeSpecibusId", "WeaponKind");
 			return View(thisTroll);
 		}
 		
 		[HttpPost]
-		public ActionResult AddSpecibus(Troll trollInstance, int strifeSpecibusId)
+		public ActionResult AddSpecibus(Troll troll, int strifeSpecibusId)
 		{
-			bool joinEntityExists = _db.StrifePortfolios.Any(join => join.StrifeSpecibusId == strifeSpecibusId && join.TrollId == trollInstance.TrollId);
+			bool joinEntityExists = _db.StrifePortfolios.Any(join => join.StrifeSpecibusId == strifeSpecibusId && join.TrollId == troll.TrollId);
 			if (!joinEntityExists && strifeSpecibusId != 0)
 			{
-				_db.StrifePortfolios.Add(new StrifePortfolio() { StrifeSpecibusId = strifeSpecibusId, TrollId = trollInstance.TrollId });
+				_db.StrifePortfolios.Add(new StrifePortfolio() { StrifeSpecibusId = strifeSpecibusId, TrollId = troll.TrollId });
 				_db.SaveChanges();
 			}
-			return RedirectToAction("Details", new { id = trollInstance.TrollId});
+			return RedirectToAction("Details", new { id = troll.TrollId});
 		}
 		
 		public ActionResult Delete(int id)
 		{
-			Troll thisTroll = _db.Trolls.FirstOrDefault(trollInstance => trollInstance.TrollId == id);
+			Troll thisTroll = _db.Trolls.FirstOrDefault(troll => troll.TrollId == id);
 			return View(thisTroll);
 		}
 		
 		[HttpPost, ActionName("Delete")]
 		public ActionResult DeleteConfirmed(int id)
 		{
-				Troll thisTroll = _db.Trolls.FirstOrDefault(trollInstance => trollInstance.TrollId == id);
+				Troll thisTroll = _db.Trolls.FirstOrDefault(troll => troll.TrollId == id);
 				_db.Trolls.Remove(thisTroll);
 				_db.SaveChanges();
 				return RedirectToAction("Index");

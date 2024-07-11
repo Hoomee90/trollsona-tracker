@@ -25,9 +25,9 @@ namespace TrollsonaOrganizer.Controllers
 		public ActionResult Details(int id)
 		{
 			StrifeSpecibus thisStrife = _db.StrifeSpecibi
-				.Include(strifeInstance => strifeInstance.JoinEntities)
+				.Include(strifeSpecibus => strifeSpecibus.JoinEntities)
 				.ThenInclude(join => join.Troll)
-				.FirstOrDefault(strifeInstance => strifeInstance.StrifeSpecibusId == id);
+				.FirstOrDefault(strifeSpecibus => strifeSpecibus.StrifeSpecibusId == id);
 			return View(thisStrife);
 		}
 		
@@ -37,42 +37,42 @@ namespace TrollsonaOrganizer.Controllers
 		}
 		
 		[HttpPost]
-		public ActionResult Create(StrifeSpecibus strifeInstance)
+		public ActionResult Create(StrifeSpecibus strifeSpecibus)
 		{
-			_db.StrifeSpecibi.Add(strifeInstance);
+			_db.StrifeSpecibi.Add(strifeSpecibus);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 		
 		public ActionResult AddTroll(int id)
 		{
-			StrifeSpecibus thisStrife = _db.StrifeSpecibi.FirstOrDefault(strifeInstance => strifeInstance.StrifeSpecibusId == id);
+			StrifeSpecibus thisStrife = _db.StrifeSpecibi.FirstOrDefault(strifeSpecibus => strifeSpecibus.StrifeSpecibusId == id);
 			ViewBag.TrollId = new SelectList(_db.Trolls, "TrollId", "Name");
 			return View(thisStrife);
 		}
 		
 		[HttpPost]
-		public ActionResult AddTroll(StrifeSpecibus strifeInstance, int trollId)
+		public ActionResult AddTroll(StrifeSpecibus strifeSpecibus, int trollId)
 		{
-			bool joinEntityExists = _db.StrifePortfolios.Any(join => join.TrollId == trollId && join.StrifeSpecibusId == strifeInstance.StrifeSpecibusId);
+			bool joinEntityExists = _db.StrifePortfolios.Any(join => join.TrollId == trollId && join.StrifeSpecibusId == strifeSpecibus.StrifeSpecibusId);
 			if (!joinEntityExists && trollId != 0)
 			{
-				_db.StrifePortfolios.Add(new StrifePortfolio() { TrollId = trollId, StrifeSpecibusId = strifeInstance.StrifeSpecibusId });
+				_db.StrifePortfolios.Add(new StrifePortfolio() { TrollId = trollId, StrifeSpecibusId = strifeSpecibus.StrifeSpecibusId });
 				_db.SaveChanges();
 			}
-			return RedirectToAction("Details", new { id = strifeInstance.StrifeSpecibusId});
+			return RedirectToAction("Details", new { id = strifeSpecibus.StrifeSpecibusId});
 		}
 		
 		public ActionResult Edit(int id)
 		{
-			StrifeSpecibus thisStrife = _db.StrifeSpecibi.FirstOrDefault(strifeInstance => strifeInstance.StrifeSpecibusId == id);
+			StrifeSpecibus thisStrife = _db.StrifeSpecibi.FirstOrDefault(strifeSpecibus => strifeSpecibus.StrifeSpecibusId == id);
 			return View(thisStrife);
 		}
 		
 		[HttpPost]
-		public ActionResult Edit(StrifeSpecibus strifeInstance)
+		public ActionResult Edit(StrifeSpecibus strifeSpecibus)
 		{
-			_db.StrifeSpecibi.Update(strifeInstance);
+			_db.StrifeSpecibi.Update(strifeSpecibus);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}

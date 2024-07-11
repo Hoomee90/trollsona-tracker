@@ -27,9 +27,9 @@ namespace TrollsonaOrganizer.Controllers
 		}
 		
 		[HttpPost]
-		public ActionResult Create(BloodCaste casteInstance)
+		public ActionResult Create(BloodCaste caste)
 		{
-			_db.BloodCastes.Add(casteInstance);
+			_db.BloodCastes.Add(caste);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
@@ -37,37 +37,37 @@ namespace TrollsonaOrganizer.Controllers
 		public ActionResult Details(int id)
 		{
 			BloodCaste thisBloodCaste = _db.BloodCastes
-				.Include(casteInstance => casteInstance.Trolls)
-				.ThenInclude(trollInstance => trollInstance.JoinEntities)
+				.Include(caste => caste.Trolls)
+				.ThenInclude(troll => troll.JoinEntities)
 				.ThenInclude(join => join.StrifeSpecibus)
-				.FirstOrDefault(casteInstance => casteInstance.BloodCasteId == id);
+				.FirstOrDefault(caste => caste.BloodCasteId == id);
 			return View(thisBloodCaste);
 		}
 		
 		public ActionResult Edit(int id)
 		{
-			BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(casteInstance => casteInstance.BloodCasteId == id);
+			BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(caste => caste.BloodCasteId == id);
 			return View(thisBloodCaste);
 		}
 		
 		[HttpPost]
-		public ActionResult Edit(BloodCaste casteInstance)
+		public ActionResult Edit(BloodCaste caste)
 		{
-			_db.BloodCastes.Update(casteInstance);
+			_db.BloodCastes.Update(caste);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
 		
 		public ActionResult Delete(int id)
 		{
-			BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(casteInstance => casteInstance.BloodCasteId == id);
+			BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(caste => caste.BloodCasteId == id);
 			return View(thisBloodCaste);
 		}
 		
 		[HttpPost, ActionName("Delete")]
 		public ActionResult DeleteConfirmed(int id)
 		{
-				BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(casteInstance => casteInstance.BloodCasteId == id);
+				BloodCaste thisBloodCaste = _db.BloodCastes.FirstOrDefault(caste => caste.BloodCasteId == id);
 				_db.BloodCastes.Remove(thisBloodCaste);
 				_db.SaveChanges();
 				return RedirectToAction("Index");
