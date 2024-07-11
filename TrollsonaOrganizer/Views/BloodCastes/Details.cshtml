@@ -1,0 +1,39 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TrollsonaOrganizer.Models;
+@model TrollsonaOrganizer.Models.BloodCaste;
+
+<h4>Category Details</h4>
+
+<p>Caste Name: @Html.DisplayFor(model => model.ColorName)<p>
+
+@if (@Model.Trolls.Count == 0)
+{
+  <h3>No trolls have been added to this caste yet</h3>
+} 
+else
+{
+  <h3>Caste Members</h3>
+  <ul>
+    @foreach (Troll troll in Model.Trolls)
+    {
+      string specibi = "";
+      @if(troll.JoinEntities.Count == 0)
+      {
+        specibi = "This troll's strife portfolio is empty";
+      }
+      else
+      {
+        specibi = String.Join(", ", troll.JoinEntities.Select(join => join.StrifeSpecibus.KindAbstratus));
+      }
+      <li>@Html.ActionLink($"{troll.Name}", "Details", "Trolls", new { id = troll.TrollId }) | @specibi</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add new item", "Create", "Trolls")</p>
+<p>@Html.ActionLink("Edit Category", "Edit", new { id = Model.BloodCasteId })</p>
+<p>@Html.ActionLink("Delete Category", "Delete", new { id = Model.BloodCasteId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>

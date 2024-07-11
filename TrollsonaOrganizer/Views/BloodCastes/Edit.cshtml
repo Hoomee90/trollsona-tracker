@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.BloodCaste
+
+<h4>Edit</h4>
+
+<p>Edit caste: @Html.DisplayFor(model => model.ColorName)</p>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.BloodCasteId);
+
+    Html.LabelFor(model => model.ColorName, "Caste Name");
+    @Html.EditorFor(model => model.ColorName);
+
+    @Html.LabelFor(model => model.ColorHex, "Color");
+    @Html.EditorFor(model => model.ColorHex, new { @type = "color" });
+
+    @Html.LabelFor(model => model.Division);
+    @Html.EditorFor(model => model.Division);
+
+    <input type="submit" value="Save">
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
