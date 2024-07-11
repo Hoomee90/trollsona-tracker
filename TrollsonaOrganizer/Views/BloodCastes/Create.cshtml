@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.BloodCaste
+
+<h4>Create Blood Caste</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.ColorName, "Caste Name");
+  @Html.TextBoxFor(model => model.ColorName, new { @placeholder = "e. g. Rust"});
+
+  @Html.LabelFor(model => model.ColorHex, "Color");
+  @Html.TextBoxFor(model => model.ColorHex, new { @type = "color" });
+
+  @Html.LabelFor(model => model.Division);
+  @Html.TextBoxFor(model => model.Division, new { @placeholder = "e. g. Highblood, Mutant"});
+
+  <input type="submit" value="Add new caste">
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
