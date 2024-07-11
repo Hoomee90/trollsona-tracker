@@ -65,7 +65,7 @@ namespace TrollsonaOrganizer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("WeaponKind")
+                    b.Property<string>("KindAbstratus")
                         .HasColumnType("longtext");
 
                     b.HasKey("StrifeSpecibusId");

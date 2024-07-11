@@ -10,8 +10,8 @@ using TrollsonaOrganizer.Models;
 namespace TrollsonaOrganizer.Migrations
 {
     [DbContext(typeof(TrollsonaOrganizerContext))]
-    [Migration("20240711204858_Initial")]
-    partial class Initial
+    [Migration("20240711220046_UpdateSpecibusProperty")]
+    partial class UpdateSpecibusProperty
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

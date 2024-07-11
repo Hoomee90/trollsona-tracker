@@ -70,7 +70,7 @@ namespace TrollsonaOrganizer.Controllers
 		public ActionResult AddSpecibus(int id)
 		{
 			Troll thisTroll = _db.Trolls.FirstOrDefault(troll => troll.TrollId == id);
-			ViewBag.StrifeSpecibusId = new SelectList(_db.StrifeSpecibi, "StrifeSpecibusId", "WeaponKind");
+			ViewBag.StrifeSpecibusId = new SelectList(_db.StrifeSpecibi, "StrifeSpecibusId", "KindAbstratus");
 			return View(thisTroll);
 		}
 		

@@ -37,7 +37,7 @@ namespace TrollsonaOrganizer.Migrations
                 {
                     StrifeSpecibusId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    WeaponKind = table.Column<string>(type: "longtext", nullable: true)
+                    KindAbstratus = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
