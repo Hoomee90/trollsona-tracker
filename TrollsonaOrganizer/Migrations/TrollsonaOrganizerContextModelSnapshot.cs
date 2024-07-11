@@ -18,6 +18,27 @@ namespace TrollsonaOrganizer.Migrations
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("TrollsonaOrganizer.Models.Allocation", b =>
+                {
+                    b.Property<int>("AllocationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("StrifeSpecibusId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TrollId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AllocationId");
+
+                    b.HasIndex("StrifeSpecibusId");
+
+                    b.HasIndex("TrollId");
+
+                    b.ToTable("Allocations");
+                });
+
             modelBuilder.Entity("TrollsonaOrganizer.Models.BloodCaste", b =>
                 {
                     b.Property<int>("BloodCasteId")
@@ -36,27 +57,6 @@ namespace TrollsonaOrganizer.Migrations
                     b.HasKey("BloodCasteId");
 
                     b.ToTable("BloodCastes");
-                });
-
-            modelBuilder.Entity("TrollsonaOrganizer.Models.StrifePortfolio", b =>
-                {
-                    b.Property<int>("StrifePortfolioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("StrifeSpecibusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrollId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StrifePortfolioId");
-
-                    b.HasIndex("StrifeSpecibusId");
-
-                    b.HasIndex("TrollId");
-
-                    b.ToTable("StrifePortfolios");
                 });
 
             modelBuilder.Entity("TrollsonaOrganizer.Models.StrifeSpecibus", b =>
@@ -98,7 +98,7 @@ namespace TrollsonaOrganizer.Migrations
                     b.ToTable("Trolls");
                 });
 
-            modelBuilder.Entity("TrollsonaOrganizer.Models.StrifePortfolio", b =>
+            modelBuilder.Entity("TrollsonaOrganizer.Models.Allocation", b =>
                 {
                     b.HasOne("TrollsonaOrganizer.Models.StrifeSpecibus", "StrifeSpecibus")
                         .WithMany("JoinEntities")

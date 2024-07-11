@@ -72,25 +72,25 @@ namespace TrollsonaOrganizer.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "StrifePortfolios",
+                name: "Allocations",
                 columns: table => new
                 {
-                    StrifePortfolioId = table.Column<int>(type: "int", nullable: false)
+                    AllocationId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     TrollId = table.Column<int>(type: "int", nullable: false),
                     StrifeSpecibusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StrifePortfolios", x => x.StrifePortfolioId);
+                    table.PrimaryKey("PK_Allocations", x => x.AllocationId);
                     table.ForeignKey(
-                        name: "FK_StrifePortfolios_StrifeSpecibi_StrifeSpecibusId",
+                        name: "FK_Allocations_StrifeSpecibi_StrifeSpecibusId",
                         column: x => x.StrifeSpecibusId,
                         principalTable: "StrifeSpecibi",
                         principalColumn: "StrifeSpecibusId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StrifePortfolios_Trolls_TrollId",
+                        name: "FK_Allocations_Trolls_TrollId",
                         column: x => x.TrollId,
                         principalTable: "Trolls",
                         principalColumn: "TrollId",
@@ -99,13 +99,13 @@ namespace TrollsonaOrganizer.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StrifePortfolios_StrifeSpecibusId",
-                table: "StrifePortfolios",
+                name: "IX_Allocations_StrifeSpecibusId",
+                table: "Allocations",
                 column: "StrifeSpecibusId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StrifePortfolios_TrollId",
-                table: "StrifePortfolios",
+                name: "IX_Allocations_TrollId",
+                table: "Allocations",
                 column: "TrollId");
 
             migrationBuilder.CreateIndex(
@@ -117,7 +117,7 @@ namespace TrollsonaOrganizer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StrifePortfolios");
+                name: "Allocations");
 
             migrationBuilder.DropTable(
                 name: "StrifeSpecibi");

@@ -10,6 +10,6 @@ namespace TrollsonaOrganizer.Models
 		public int Age { get; set; }
 		public int BloodCasteId { get; set; }
 		public BloodCaste BloodCaste { get; set; }
-		public List<StrifePortfolio> JoinEntities { get; }
+		public List<Allocation> JoinEntities { get; }
 	}
 }

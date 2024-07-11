@@ -40,9 +40,9 @@ namespace TrollsonaOrganizer.Migrations
                     b.ToTable("BloodCastes");
                 });
 
-            modelBuilder.Entity("TrollsonaOrganizer.Models.StrifePortfolio", b =>
+            modelBuilder.Entity("TrollsonaOrganizer.Models.Allocation", b =>
                 {
-                    b.Property<int>("StrifePortfolioId")
+                    b.Property<int>("AllocationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -52,13 +52,13 @@ namespace TrollsonaOrganizer.Migrations
                     b.Property<int>("TrollId")
                         .HasColumnType("int");
 
-                    b.HasKey("StrifePortfolioId");
+                    b.HasKey("AllocationId");
 
                     b.HasIndex("StrifeSpecibusId");
 
                     b.HasIndex("TrollId");
 
-                    b.ToTable("StrifePortfolios");
+                    b.ToTable("Allocations");
                 });
 
             modelBuilder.Entity("TrollsonaOrganizer.Models.StrifeSpecibus", b =>
@@ -100,7 +100,7 @@ namespace TrollsonaOrganizer.Migrations
                     b.ToTable("Trolls");
                 });
 
-            modelBuilder.Entity("TrollsonaOrganizer.Models.StrifePortfolio", b =>
+            modelBuilder.Entity("TrollsonaOrganizer.Models.Allocation", b =>
                 {
                     b.HasOne("TrollsonaOrganizer.Models.StrifeSpecibus", "StrifeSpecibus")
                         .WithMany("JoinEntities")

@@ -10,8 +10,8 @@ using TrollsonaOrganizer.Models;
 namespace TrollsonaOrganizer.Migrations
 {
     [DbContext(typeof(TrollsonaOrganizerContext))]
-    [Migration("20240711204858_Initial")]
-    partial class Initial
+    [Migration("20240711224643_UpdateJoinEntityName")]
+    partial class UpdateJoinEntityName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,26 +19,6 @@ namespace TrollsonaOrganizer.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("TrollsonaOrganizer.Models.BloodCaste", b =>
-                {
-                    b.Property<int>("BloodCasteId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ColorHex")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ColorName")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Division")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("BloodCasteId");
-
-                    b.ToTable("BloodCastes");
-                });
 
             modelBuilder.Entity("TrollsonaOrganizer.Models.Allocation", b =>
                 {
@@ -59,6 +39,26 @@ namespace TrollsonaOrganizer.Migrations
                     b.HasIndex("TrollId");
 
                     b.ToTable("Allocations");
+                });
+
+            modelBuilder.Entity("TrollsonaOrganizer.Models.BloodCaste", b =>
+                {
+                    b.Property<int>("BloodCasteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("ColorHex")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ColorName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Division")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("BloodCasteId");
+
+                    b.ToTable("BloodCastes");
                 });
 
             modelBuilder.Entity("TrollsonaOrganizer.Models.StrifeSpecibus", b =>

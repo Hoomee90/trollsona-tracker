@@ -77,10 +77,10 @@ namespace TrollsonaOrganizer.Controllers
 		[HttpPost]
 		public ActionResult AddSpecibus(Troll troll, int strifeSpecibusId)
 		{
-			bool joinEntityExists = _db.StrifePortfolios.Any(join => join.StrifeSpecibusId == strifeSpecibusId && join.TrollId == troll.TrollId);
+			bool joinEntityExists = _db.Allocations.Any(join => join.StrifeSpecibusId == strifeSpecibusId && join.TrollId == troll.TrollId);
 			if (!joinEntityExists && strifeSpecibusId != 0)
 			{
-				_db.StrifePortfolios.Add(new StrifePortfolio() { StrifeSpecibusId = strifeSpecibusId, TrollId = troll.TrollId });
+				_db.Allocations.Add(new Allocation() { StrifeSpecibusId = strifeSpecibusId, TrollId = troll.TrollId });
 				_db.SaveChanges();
 			}
 			return RedirectToAction("Details", new { id = troll.TrollId});
@@ -104,8 +104,8 @@ namespace TrollsonaOrganizer.Controllers
 		[HttpPost]
 		public ActionResult DeleteJoin(int joinId)
 		{
-			StrifePortfolio joinEntry = _db.StrifePortfolios.FirstOrDefault(entry => entry.StrifePortfolioId == joinId);
-			_db.StrifePortfolios.Remove(joinEntry);
+			Allocation joinEntry = _db.Allocations.FirstOrDefault(entry => entry.AllocationId == joinId);
+			_db.Allocations.Remove(joinEntry);
 			_db.SaveChanges();
 			return RedirectToAction("Index");
 		}
