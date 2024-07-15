@@ -5,9 +5,11 @@
 @using TrollsonaOrganizer.Models;
 @model TrollsonaOrganizer.Models.BloodCaste;
 
-<h4>Category Details</h4>
+<h4>@Html.DisplayFor(model => model.ColorName) Blood Caste</h4>
 
-<p>Caste Name: @Html.DisplayFor(model => model.ColorName)<p>
+<label for="blood-color">Color:</label>
+<input type="color" id="blood-color" name="blood-color" disabled value="@Html.DisplayFor(model => model.ColorHex)">
+<p>A troll of this caste is considered a @Html.DisplayFor(model => model.Division)</p>
 
 @if (@Model.Trolls.Count == 0)
 {
@@ -34,6 +36,6 @@ else
 }
 
 <p>@Html.ActionLink("Add new item", "Create", "Trolls")</p>
-<p>@Html.ActionLink("Edit Category", "Edit", new { id = Model.BloodCasteId })</p>
-<p>@Html.ActionLink("Delete Category", "Delete", new { id = Model.BloodCasteId })</p>
+<p>@Html.ActionLink("Edit caste", "Edit", new { id = Model.BloodCasteId })</p>
+<p>@Html.ActionLink("Delete caste", "Delete", new { id = Model.BloodCasteId })</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>
