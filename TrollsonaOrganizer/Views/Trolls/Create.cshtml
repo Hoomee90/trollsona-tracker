@@ -1,0 +1,23 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.Troll
+
+<h4>Create Troll</h4>
+
+<p><strong>NOTE:</strong> You need to have at least one blood caste before you can add a troll!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "BloodCastes") to create a blood caste.</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name);
+  @Html.TextBoxFor(model => model.Name);
+
+  @Html.LabelFor(model => model.BloodCaste, "Blood Caste");
+  @Html.DropDownList("BloodCasteId");
+  
+  <input type="submit" value="Add new troll">
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

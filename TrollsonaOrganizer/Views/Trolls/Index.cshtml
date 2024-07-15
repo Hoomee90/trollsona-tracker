@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TrollsonaOrganizer.Models;
+@model List<TrollsonaOrganizer.Models.Troll>;
+
+<h1>Trolls</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No trolls have been added yet!</h3>
+}
+else
+{
+  <ul>
+  @foreach (Troll troll in Model)
+  {
+    <li>@Html.ActionLink($"{troll.Name}", "Details", new { id = troll.TrollId }) | @troll.BloodCaste.ColorName blood</li>
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add new", "Create")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

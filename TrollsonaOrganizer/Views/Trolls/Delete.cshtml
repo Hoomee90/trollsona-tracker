@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.Troll
+
+<h4>Are you sure you want to delete this troll?</h4>
+<h4>@Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+@Html.ActionLink("Back to List", "Index")

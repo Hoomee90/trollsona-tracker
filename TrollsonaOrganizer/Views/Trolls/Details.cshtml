@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TrollsonaOrganizer.Models;
+@model TrollsonaOrganizer.Models.Troll;
+
+<h4>@Html.DisplayFor(model => model.Name)</h4>
+<h3>Blood caste: @Html.DisplayFor(model => model.BloodCaste.ColorName)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This troll's strife portfolio is empty!</p>
+}
+else
+{
+  <h4>This troll has the following specibi in their portfolio:</h4>
+  <ul>
+    @foreach(Allocation join in Model.JoinEntities)
+    {
+      <li>@join.StrifeSpecibus.KindAbstratus</li>
+      @using (Html.BeginForm("DeleteJoin", "Trolls"))
+      {
+        @Html.Hidden("joinId", @join.AllocationId)
+        <input type="submit" value="Remove">
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add a specibi", "AddTagName", new { id = Model.TrollId })</p>
+<p>@Html.ActionLink("Edit troll", "Edit", new { id = Model.TrollId })</p>
+<p>@Html.ActionLink("Delete troll", "Delete", new { id = Model.TrollId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
