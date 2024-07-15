@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.StrifeSpecibus
+
+<h4>Equip to a troll</h4>
+
+<h3>@Html.DisplayFor(model => model.KindAbstratus)</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.StrifeSpecibusId)
+
+    @Html.Label("Select a troll to equip")
+    @Html.DropDownList("TrollId")
+
+    <input type="submit" value="Save">
+}
+
+<p>@Html.ActionLink("Back to specibus list", "Index")</p>

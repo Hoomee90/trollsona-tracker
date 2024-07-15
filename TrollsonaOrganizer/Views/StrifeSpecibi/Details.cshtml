@@ -15,7 +15,7 @@
 }
 else
 {
-  <h4>Trolls who have this specibus:</h4>
+  <h4>Possessors</h4>
   <ul>
   @foreach(Allocation join in Model.JoinEntities)
   {
@@ -29,7 +29,7 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Equip troll", "AddTroll", new { id = Model.StrifeSpecibusId })</p>
+<p>@Html.ActionLink("Equip to a troll", "AddTroll", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Edit specibus", "Edit", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Delete specibus", "Delete", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Back to specibus list", "Index")</p>
