@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.StrifeSpecibus
+
+<h4>Edit</h4>
+
+<h3>@Html.DisplayFor(model => model.KindAbstratus)</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.StrifeSpecibusId)
+
+    @Html.LabelFor(model => model.KindAbstratus, "Kind Abstratus")
+    @Html.EditorFor(model => model.KindAbstratus)
+
+    <input type="submit" value="Save">
+}
+
+<p>@Html.ActionLink("Back to specibus list", "Index")</p>

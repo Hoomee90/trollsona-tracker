@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TrollsonaOrganizer.Models;
+@model TrollsonaOrganizer.Models.StrifeSpecibus;
+
+<h4>Specibus Details</h4>
+
+<h3>@Html.DisplayFor(model => model.KindAbstratus)</h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>No trolls have this specibus in their portfolio</p>
+}
+else
+{
+  <h4>Trolls who have this specibus:</h4>
+  <ul>
+  @foreach(Allocation join in Model.JoinEntities)
+  {
+    <li>@join.Troll.Name</li>
+    @using (Html.BeginForm("DeleteJoin", "StrifeSpecibi"))
+    {
+      @Html.Hidden("joinId", @join.AllocationId)
+      <input type="submit" value="Remove">
+    }
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add to a troll", "AddTroll", new { id = Model.StrifeSpecibusId })</p>
+<p>@Html.ActionLink("Edit specibus", "Edit", new { id = Model.StrifeSpecibusId })</p>
+<p>@Html.ActionLink("Delete specibus", "Delete", new { id = Model.StrifeSpecibusId })</p>
+<p>@Html.ActionLink("Back to specibus list", "Index")</p>

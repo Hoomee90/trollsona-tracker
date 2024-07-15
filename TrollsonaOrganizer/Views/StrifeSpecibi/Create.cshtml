@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TrollsonaOrganizer.Models.StrifeSpecibus
+
+<h3>Create a new strife specibus</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.KindAbstratus, "Kind Abstratus")
+    @Html.TextBoxFor(model => model.KindAbstratus)
+
+    <input type="submit" value="Create new specibus" class="btn btn-primary">
+}
+
+<p>@Html.ActionLink("Back to specibus list", "Index")</p>
