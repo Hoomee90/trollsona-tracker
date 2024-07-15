@@ -4,9 +4,9 @@
 
 @model TrollsonaOrganizer.Models.BloodCaste
 
-<h4>Edit</h4>
+<h4>Edit Caste</h4>
 
-<p>Edit caste: @Html.DisplayFor(model => model.ColorName)</p>
+<h3>@Html.DisplayFor(model => model.ColorName)</h3>
 
 @using (Html.BeginForm())
 {
@@ -24,4 +24,4 @@
     <input type="submit" value="Save">
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Back to caste list", "Index")</p>

@@ -4,9 +4,9 @@
 
 @model TrollsonaOrganizer.Models.Troll
 
-<h4>Create Troll</h4>
+<h4>Create a Troll</h4>
 
-<p><strong>NOTE:</strong> You need to have at least one blood caste before you can add a troll!</p>
+<p><strong>NOTE:</strong> You need to have at least one blood caste before you can create a troll!</p>
 <p>Go to @Html.ActionLink("this page", "Create", "BloodCastes") to create a blood caste.</p>
 
 @using (Html.BeginForm())
@@ -20,4 +20,4 @@
   <input type="submit" value="Add new troll">
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Back to troll list", "Index")</p>

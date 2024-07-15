@@ -5,7 +5,9 @@
 @using TrollsonaOrganizer.Models;
 @model TrollsonaOrganizer.Models.BloodCaste;
 
-<h4>@Html.DisplayFor(model => model.ColorName) Blood Caste</h4>
+<h4>Blood Caste Details</h4>
+
+<h3>@Html.DisplayFor(model => model.ColorName)</h3>
 
 <label for="blood-color">Color:</label>
 <input type="color" id="blood-color" name="blood-color" disabled value="@Html.DisplayFor(model => model.ColorHex)">
@@ -17,7 +19,7 @@
 } 
 else
 {
-  <h3>Caste Members</h3>
+  <h4>Caste Members:</h4>
   <ul>
     @foreach (Troll troll in Model.Trolls)
     {
@@ -35,7 +37,7 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Add new item", "Create", "Trolls")</p>
+<p>@Html.ActionLink("Add new troll", "Create", "Trolls")</p>
 <p>@Html.ActionLink("Edit caste", "Edit", new { id = Model.BloodCasteId })</p>
 <p>@Html.ActionLink("Delete caste", "Delete", new { id = Model.BloodCasteId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Back to caste list", "Index")</p>

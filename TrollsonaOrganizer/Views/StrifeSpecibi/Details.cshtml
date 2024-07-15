@@ -5,7 +5,7 @@
 @using TrollsonaOrganizer.Models;
 @model TrollsonaOrganizer.Models.StrifeSpecibus;
 
-<h4>Specibus Details</h4>
+<h4>Strife Specibus Details</h4>
 
 <h3>@Html.DisplayFor(model => model.KindAbstratus)</h3>
 
@@ -29,7 +29,7 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Add to a troll", "AddTroll", new { id = Model.StrifeSpecibusId })</p>
+<p>@Html.ActionLink("Equip troll", "AddTroll", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Edit specibus", "Edit", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Delete specibus", "Delete", new { id = Model.StrifeSpecibusId })</p>
 <p>@Html.ActionLink("Back to specibus list", "Index")</p>

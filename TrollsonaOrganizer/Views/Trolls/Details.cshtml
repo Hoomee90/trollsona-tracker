@@ -5,8 +5,11 @@
 @using TrollsonaOrganizer.Models;
 @model TrollsonaOrganizer.Models.Troll;
 
-<h4>@Html.DisplayFor(model => model.Name)</h4>
-<h3>Blood caste: @Html.DisplayFor(model => model.BloodCaste.ColorName)</h3>
+<h4>Troll Details</h4>
+
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+
+<p>Blood caste: @Html.DisplayFor(model => model.BloodCaste.ColorName)</p>
 
 @if(@Model.JoinEntities.Count == 0)
 {
@@ -14,7 +17,7 @@
 }
 else
 {
-  <h4>This troll has the following specibi in their portfolio:</h4>
+  <h4>Strife portfolio</h4>
   <ul>
     @foreach(Allocation join in Model.JoinEntities)
     {
@@ -31,4 +34,4 @@ else
 <p>@Html.ActionLink("Add a specibi", "AddTagName", new { id = Model.TrollId })</p>
 <p>@Html.ActionLink("Edit troll", "Edit", new { id = Model.TrollId })</p>
 <p>@Html.ActionLink("Delete troll", "Delete", new { id = Model.TrollId })</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Back to troll list", "Index")</p>
